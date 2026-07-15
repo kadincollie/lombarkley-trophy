@@ -267,12 +267,20 @@ def snapshot_completed_week(existing, teams, current):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Scrape a publicly-viewable Yahoo league (no API)")
-    ap.add_argument("--league", required=True, help="Yahoo league id (the number in your league URL)")
+    ap.add_argument("--league", default=os.environ.get("YAHOO_LEAGUE_ID"),
+                    help="Yahoo league id (the number in your league URL). "
+                         "Defaults to the YAHOO_LEAGUE_ID env var.")
     ap.add_argument("--from-files", default=None,
                     help="Folder of saved .html pages instead of fetching (offline/private mode)")
     ap.add_argument("--dump", action="store_true", help="Save fetched HTML for debugging")
     args = ap.parse_args()
 
+    if not args.league:
+        sys.exit(
+            "No Yahoo league id supplied.\n"
+            "  In GitHub Actions: Settings -> Secrets and variables -> Actions -> the *Variables* tab\n"
+            "    (not Secrets) -> New repository variable -> Name: YAHOO_LEAGUE_ID -> Value: your league number.\n"
+            "  Locally:  python scripts/fetch_league_web.py --league 161092")
     lid = re.sub(r"\D", "", str(args.league))
     if args.from_files:
         folder = args.from_files
@@ -342,3 +350,4 @@ if __name__ == "__main__":
     json.dump(payload, open(OUT, "w"), indent=2)
     print(f"✓ Wrote {OUT}")
     print("  Open index.html to preview, then push so the league sees the update.")
+
