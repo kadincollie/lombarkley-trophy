@@ -50,11 +50,16 @@ jobs:
           SEASON:              ${{ vars.SEASON }}
           BEST_LINEUP:         "1"   # API mode only: project off best available (healthy) lineup
         run: |
+          echo "YAHOO_LEAGUE_ID=${YAHOO_LEAGUE_ID:-<empty>}"
+          if [ -z "$YAHOO_LEAGUE_ID" ]; then
+            echo "::error::YAHOO_LEAGUE_ID is not set. Add it under Settings -> Secrets and variables -> Actions -> the Variables tab (not Secrets)."
+            exit 1
+          fi
           if [ -n "$YAHOO_CLIENT_ID" ] && [ -n "$YAHOO_REFRESH_TOKEN" ]; then
             echo "Using Yahoo API (credentials found)"
             python scripts/fetch_league.py
           else
-            echo "No API credentials — scraping the publicly-viewable league pages"
+            echo "No API credentials -- scraping the publicly-viewable league pages"
             python scripts/fetch_league_web.py --league "$YAHOO_LEAGUE_ID"
           fi
 
