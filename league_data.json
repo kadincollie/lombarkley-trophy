@@ -1,0 +1,276 @@
+{
+  "meta": {
+    "entry_fee": 100,
+    "payouts": {
+      "1st": 500,
+      "2nd": 260,
+      "3rd": 100
+    },
+    "weekly_bonus": 10,
+    "currency_name": "Collie Coins",
+    "coin_start": 100,
+    "regular_season_weeks": 14,
+    "playoff_teams": 6,
+    "commissioner": "Kadin",
+    "season_complete": false,
+    "league_name": "The LomBarkley Trophy",
+    "season": 2026,
+    "current_week": 1,
+    "num_teams": 10,
+    "pot": 1000,
+    "updated_at": "2026-07-15T02:02:03.801689+00:00",
+    "data_source": "Yahoo Fantasy (web)",
+    "pre_draft": true
+  },
+  "teams": [
+    {
+      "id": "t1",
+      "name": "Young Ollie Gordon III",
+      "manager": "Young Ollie Gordon III",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 1,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t2",
+      "name": "AirBnBijan",
+      "manager": "AirBnBijan",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 2,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t3",
+      "name": "Bands Emeka Dance \ud83d\udd7a\ud83c\udffd",
+      "manager": "Bands Emeka Dance \ud83d\udd7a\ud83c\udffd",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 3,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t4",
+      "name": "Josh allen",
+      "manager": "Josh allen",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 4,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t5",
+      "name": "Ice Cold matt",
+      "manager": "Ice Cold matt",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 5,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t6",
+      "name": "The Warren Drugs",
+      "manager": "The Warren Drugs",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 6,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t7",
+      "name": "Eazy Pickens",
+      "manager": "Eazy Pickens",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 7,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t8",
+      "name": "Butt diggers",
+      "manager": "Butt diggers",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 8,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t9",
+      "name": "Puka Troopers",
+      "manager": "Puka Troopers",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 9,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    },
+    {
+      "id": "t10",
+      "name": "Marlon\u2019s Wins",
+      "manager": "Marlon\u2019s Wins",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "points_for": 0.0,
+      "points_against": 0.0,
+      "streak": "\u2014",
+      "rank": 10,
+      "moves": 0,
+      "trades": 0,
+      "proj_avg": 0.0
+    }
+  ],
+  "current_matchups": [],
+  "weeks": [],
+  "transactions": [],
+  "coins": {
+    "start_balance": 100,
+    "ledger": [
+      {
+        "team": "t1",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t2",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t3",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t4",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t5",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t6",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t7",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t8",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t9",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      },
+      {
+        "team": "t10",
+        "balance": 100,
+        "bets_won": 0,
+        "bets_lost": 0,
+        "net": 0
+      }
+    ],
+    "open_bets": []
+  },
+  "champions": [
+    {
+      "year": 2025,
+      "first": "Daki",
+      "second": "Kadin",
+      "third": "Drew"
+    },
+    {
+      "year": 2024,
+      "first": "Daki",
+      "second": "Matt",
+      "third": "Drew"
+    },
+    {
+      "year": 2023,
+      "first": "Kadin",
+      "second": "Daki",
+      "third": "Jack"
+    }
+  ]
+}

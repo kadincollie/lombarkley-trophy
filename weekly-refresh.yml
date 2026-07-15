@@ -1,0 +1,71 @@
+# Auto-refresh the league data from Yahoo and commit it, so everyone's app
+# updates without you lifting a finger.
+#
+# ONE-TIME SETUP (repo → Settings):
+#   Secrets and variables → Actions → New repository secret:
+#     YAHOO_CLIENT_ID       (from your Yahoo developer app)
+#     YAHOO_CLIENT_SECRET   (from your Yahoo developer app)
+#     YAHOO_REFRESH_TOKEN   (printed by `yahoofantasy login` — the "Refresh Token:" line)
+#   Then add two repository *Variables* (same screen, Variables tab):
+#     YAHOO_LEAGUE_ID       (the number in your league URL)
+#     SEASON                (e.g. 2026)
+#
+# That's it. It runs every Tuesday morning (after Monday Night Football finalizes
+# the week) and you can also trigger it by hand from the Actions tab.
+
+name: Weekly League Refresh
+
+on:
+  schedule:
+    - cron: "0 13 * * 2"   # Tuesdays 13:00 UTC (~9am ET). Add more lines for extra pulls.
+    # - cron: "0 4 * * 1"  # e.g. Mondays 4:00 UTC to catch Sunday-night scores
+  workflow_dispatch:        # manual "Run workflow" button
+
+permissions:
+  contents: write           # allow the action to commit the refreshed data
+
+concurrency:                # never let two refreshes race each other
+  group: league-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Pull latest from Yahoo (API if credentials exist, otherwise public-page scrape)
+        env:
+          YAHOO_CLIENT_ID:     ${{ secrets.YAHOO_CLIENT_ID }}
+          YAHOO_CLIENT_SECRET: ${{ secrets.YAHOO_CLIENT_SECRET }}
+          YAHOO_REFRESH_TOKEN: ${{ secrets.YAHOO_REFRESH_TOKEN }}
+          YAHOO_LEAGUE_ID:     ${{ vars.YAHOO_LEAGUE_ID }}
+          SEASON:              ${{ vars.SEASON }}
+          BEST_LINEUP:         "1"   # API mode only: project off best available (healthy) lineup
+        run: |
+          if [ -n "$YAHOO_CLIENT_ID" ] && [ -n "$YAHOO_REFRESH_TOKEN" ]; then
+            echo "Using Yahoo API (credentials found)"
+            python scripts/fetch_league.py
+          else
+            echo "No API credentials — scraping the publicly-viewable league pages"
+            python scripts/fetch_league_web.py --league "$YAHOO_LEAGUE_ID"
+          fi
+
+      - name: Commit if the data changed
+        run: |
+          git config user.name  "league-bot"
+          git config user.email "league-bot@users.noreply.github.com"
+          if git diff --quiet -- data/league_data.json; then
+            echo "No changes this run."
+          else
+            git add data/league_data.json
+            git commit -m "Weekly refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

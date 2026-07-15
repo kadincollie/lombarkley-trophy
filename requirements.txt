@@ -1,0 +1,3 @@
+# The LomBarkley Trophy — Yahoo Fantasy data pipeline
+yahoofantasy>=1.4.0
+requests>=2.28
